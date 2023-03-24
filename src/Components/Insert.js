@@ -33,15 +33,17 @@ const Insert = () => {
   const changePieces = (e) => {
     setPieces(e.target.value)
     
+    
   }
   const changeStatus = (e) => {
     setStatus(e)
   }
- const data = {status, pieces, city, unique_no, token }
-
+  const data = {status, pieces, city, unique_no, token }
+  
   const sumbmitHandler = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:4000/insert", data, {
+    const api = process.env.REACT_APP_API_URL ;
+    await axios.post(`${api}/insert`, data, {
       headers: { 'Content-Type': 'application/json' }
     })
       .then((e) => {

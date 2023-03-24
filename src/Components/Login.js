@@ -14,8 +14,10 @@ const Login = () => {
 
     const cookies = new Cookies();
     const sumbmitHandler = async (e) => {
+    const api = process.env.REACT_APP_API_URL ;
+
       e.preventDefault();
-      await axios.post("http://localhost:4000/signin",{email,password} ,{
+      await axios.post(`${api}/signin`,{email,password} ,{
         headers: { 'Content-Type': 'application/json' }
       })
         .then((data) => {

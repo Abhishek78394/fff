@@ -18,8 +18,9 @@ export default function Show() {
   const cookies = new Cookies();
   const token = cookies.get('token')
   const sumbmitHandler = async (e) => {
-   console.log(token)
-     await axios.get(`http://localhost:4000/getdata?token=${token}`)
+    const api = process.env.REACT_APP_API_URL ;
+    console.log(token)
+     await axios.get(`${api}/getdata?token=${token}`)
       .then((e) => {
 
        setData(e.data.products)

@@ -29,7 +29,10 @@ import Cookies from 'universal-cookie';
     const navigate = useNavigate();
   
   const LogoutHander = async ()=>{
-await axios.get(`http://localhost:4000/signout?token=${token}`)
+    const api = process.env.REACT_APP_API_URL ;
+    const token = cookies.get('token')
+    cookies.remove('token')
+await axios.get(`${api}/signout?token=${token}`)
 
 navigate('/login')
   }

@@ -13,4 +13,6 @@ connectDatabase();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
-app.listen(PORT, () => console.log(`server running on port: ${PORT}`));
+if (process.env.PORT) {
+    app.listen(process.env.PORT, console.log("server running.."));
+}
